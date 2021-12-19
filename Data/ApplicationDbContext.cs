@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Proje.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -12,5 +14,11 @@ namespace Proje.Data
             : base(options)
         {
         }
+
+        //public DbSet<IdentityUser> Users { get; set; }
+        //public DbSet<IdentityRole> Roles { get; set; }
+        public DbSet<Food> Foods { get; set; }
+        public DbSet<FoodCategory> FoodCategories { get; set; }
+
     }
 }

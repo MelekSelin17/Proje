@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Proje.Models;
 using System;
@@ -22,7 +23,7 @@ namespace Proje.Controllers
         {
             return View();
         }
-
+        [Authorize(Roles = "Admin")]
         public IActionResult Privacy()
         {
             return View();
