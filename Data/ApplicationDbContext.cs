@@ -19,6 +19,9 @@ namespace Proje.Data
         //public DbSet<IdentityRole> Roles { get; set; }
         public DbSet<Food> Foods { get; set; }
         public DbSet<FoodCategory> FoodCategories { get; set; }
+        public DbSet<UserDetail> UserDetails { get; set; }
+        public DbSet<Like> Likes { get; set; }
+        public DbSet<Comment> Comments { get; set; }
 
     }
 }

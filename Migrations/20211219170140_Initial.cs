@@ -166,6 +166,27 @@ namespace Proje.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "UserDetails",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    UsersId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UserDetails", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_UserDetails_AspNetUsers_UsersId",
+                        column: x => x.UsersId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Foods",
                 columns: table => new
                 {
@@ -184,6 +205,45 @@ namespace Proje.Migrations
                         name: "FK_Foods_FoodCategories_FoodCategoryId",
                         column: x => x.FoodCategoryId,
                         principalTable: "FoodCategories",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Comments",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UserDetailId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Comments", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Comments_UserDetails_UserDetailId",
+                        column: x => x.UserDetailId,
+                        principalTable: "UserDetails",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Likes",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserDetailId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Likes", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Likes_UserDetails_UserDetailId",
+                        column: x => x.UserDetailId,
+                        principalTable: "UserDetails",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -228,9 +288,24 @@ namespace Proje.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Comments_UserDetailId",
+                table: "Comments",
+                column: "UserDetailId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Foods_FoodCategoryId",
                 table: "Foods",
                 column: "FoodCategoryId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Likes_UserDetailId",
+                table: "Likes",
+                column: "UserDetailId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UserDetails_UsersId",
+                table: "UserDetails",
+                column: "UsersId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -251,16 +326,25 @@ namespace Proje.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "Comments");
+
+            migrationBuilder.DropTable(
                 name: "Foods");
+
+            migrationBuilder.DropTable(
+                name: "Likes");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "AspNetUsers");
+                name: "FoodCategories");
 
             migrationBuilder.DropTable(
-                name: "FoodCategories");
+                name: "UserDetails");
+
+            migrationBuilder.DropTable(
+                name: "AspNetUsers");
         }
     }
 }

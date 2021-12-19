@@ -10,7 +10,7 @@ using Proje.Data;
 namespace Proje.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20211219153721_Initial")]
+    [Migration("20211219170140_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -217,6 +217,26 @@ namespace Proje.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("Proje.Models.Comment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UserDetailId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserDetailId");
+
+                    b.ToTable("Comments");
+                });
+
             modelBuilder.Entity("Proje.Models.Food", b =>
                 {
                     b.Property<int>("Id")
@@ -259,6 +279,46 @@ namespace Proje.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("FoodCategories");
+                });
+
+            modelBuilder.Entity("Proje.Models.Like", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("UserDetailId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserDetailId");
+
+                    b.ToTable("Likes");
+                });
+
+            modelBuilder.Entity("Proje.Models.UserDetail", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UsersId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UsersId");
+
+                    b.ToTable("UserDetails");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -312,6 +372,17 @@ namespace Proje.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Proje.Models.Comment", b =>
+                {
+                    b.HasOne("Proje.Models.UserDetail", "UserDetail")
+                        .WithMany("Comment")
+                        .HasForeignKey("UserDetailId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("UserDetail");
+                });
+
             modelBuilder.Entity("Proje.Models.Food", b =>
                 {
                     b.HasOne("Proje.Models.FoodCategory", "FoodCategory")
@@ -323,9 +394,36 @@ namespace Proje.Migrations
                     b.Navigation("FoodCategory");
                 });
 
+            modelBuilder.Entity("Proje.Models.Like", b =>
+                {
+                    b.HasOne("Proje.Models.UserDetail", "UserDetail")
+                        .WithMany("Likes")
+                        .HasForeignKey("UserDetailId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("UserDetail");
+                });
+
+            modelBuilder.Entity("Proje.Models.UserDetail", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "Users")
+                        .WithMany()
+                        .HasForeignKey("UsersId");
+
+                    b.Navigation("Users");
+                });
+
             modelBuilder.Entity("Proje.Models.FoodCategory", b =>
                 {
                     b.Navigation("Foods");
+                });
+
+            modelBuilder.Entity("Proje.Models.UserDetail", b =>
+                {
+                    b.Navigation("Comment");
+
+                    b.Navigation("Likes");
                 });
 #pragma warning restore 612, 618
         }

@@ -126,6 +126,8 @@ namespace Proje.Data
         {
             await roleManager.CreateAsync(new IdentityRole() { Name = "Admin" });
             await roleManager.CreateAsync(new IdentityRole() { Name = "Guest" });
+            await roleManager.CreateAsync(new IdentityRole() { Name = "Chef" });
+
 
             var adminObject = new IdentityUser()
             {
