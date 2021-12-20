@@ -46,17 +46,31 @@ namespace Proje
                 .AddRoleManager<RoleManager<IdentityRole>>()
                 .AddUserManager<UserManager<IdentityUser>>()
                 .AddDefaultTokenProviders()
-
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+
             services.AddRazorPages();
             services.AddControllersWithViews();
             services.AddAuthorization();
             services.AddAuthentication();
+            services.ConfigureApplicationCookie(options =>
+            {
+                // Cookie settings
+                options.Cookie.HttpOnly = true;
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
+
+                options.LoginPath = "/Account/Login";
+                options.AccessDeniedPath = "/Home/Index";
+                options.SlidingExpiration = true;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+
+
+
+
             DataSeeding.Seed(app);
             if (env.IsDevelopment())
             {

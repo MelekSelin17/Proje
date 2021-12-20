@@ -9,7 +9,7 @@
             <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
         </li>
         <li class="nav-item">
-            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+            <form class="form-inline" asp-action="logout" asp-controller="Account" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
                 <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
             </form>
         </li>
@@ -24,38 +24,3 @@
         </li>
     }
 </ul>
-<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
-
-<div class="login">
-    <h2 class="active"> sign in </h2>
-
-    <h2 class="nonactive"> sign up </h2>
-    <form>
-
-
-
-        <input type="text" class="text" name="username">
-        <span>username</span>
-
-        <br>
-
-        <br>
-
-        <input type="password" class="text" name="password">
-        <span>password</span>
-        <br>
-
-        <input type="checkbox" id="checkbox-1-1" class="custom-checkbox" />
-        <label for="checkbox-1-1">Keep me Signed in</label>
-
-        <button class="signin">
-            Sign In
-        </button>
-
-
-        <hr>
-
-        <a href="#">Forgot Password?</a>
-    </form>
-
-</div>
