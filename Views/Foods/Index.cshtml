@@ -1,7 +1,7 @@
-﻿@{
+﻿@model List<Proje.Models.Food>
+@{
     ViewData["Title"] = "Home Page";
 }
-@model Proje.Models.FoodCategory
 <!DOCTYPE html>
 <html>
 
@@ -26,7 +26,7 @@ https://templatemo.com/tm-539-simple-house
         <!-- Top box -->
         <!-- Logo & Site Name -->
         <div class="placeholder">
-            <div class="parallax-window" data-parallax="scroll" >
+            <div class="parallax-window" data-parallax="scroll">
                 <img class="parallax-slider" style="transform: translate3d(0px, 0px, 0px); position: absolute; top: -139px; left: 0px; height: 739px; width: 739px; max-width: none;" src="~/temp/img/vienna-g82af17690_1280.jpg" />
 
                 <div class="tm-header">
@@ -59,11 +59,11 @@ https://templatemo.com/tm-539-simple-house
             <div class="tm-paging-links">
                 <nav>
                     <ul>
-                        @foreach (var item in Model.Foods)
+                        @foreach (var item in Model)
                         {
-                        <li class="tm-paging-item"><a href="#" class="tm-paging-link active">@item</a></li>
-                        <li class="tm-paging-item"><a href="#" class="tm-paging-link">Salad</a></li>
-                        <li class="tm-paging-item"><a href="#" class="tm-paging-link">Noodle</a></li>}
+                        <li class="tm-paging-item"><a href="#" class="tm-paging-link active">@item.Name</a></li>
+                 
+                        }
                     </ul>
                 </nav>
             </div>

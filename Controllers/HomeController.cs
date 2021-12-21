@@ -21,7 +21,7 @@ namespace Proje.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            return View(new FoodCategory());
         }
         [Authorize(Roles = "Admin")]
         public IActionResult Privacy()
