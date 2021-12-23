@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using Proje.Data;
 using Proje.Models;
 using System;
 using System.Collections.Generic;
@@ -14,14 +16,17 @@ namespace Proje.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        private readonly ApplicationDbContext _context;
+        public HomeController(ILogger<HomeController> logger, ApplicationDbContext context)
         {
             _logger = logger;
+            _context = context;
         }
 
         public IActionResult Index()
         {
-            return View(new FoodCategory());
+            var result = _context.FoodCategories.Include(m=>m.Foods).ToList();
+            return View(result);
         }
         [Authorize(Roles = "Admin")]
         public IActionResult Privacy()

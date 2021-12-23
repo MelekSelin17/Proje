@@ -20,7 +20,7 @@ namespace Proje.Models
 
         [ForeignKey("FoodCategory")]
         public int FoodCategoryId { get; set; }
-        public FoodCategory FoodCategory { get; set; }
+        public  FoodCategory FoodCategory { get; set; }
 
     }
 }
