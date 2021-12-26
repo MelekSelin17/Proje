@@ -118,15 +118,36 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="String1" xml:space="preserve">
-    <value>Home</value>
+    <value>Ana Sayfa</value>
   </data>
   <data name="String2" xml:space="preserve">
-    <value>Famous for its healthy food and taste, Angel's Restaurant is in London with its 13th branch. We do what we love with our excellent staff. We achieve success with our energy.</value>
+    <value>Hakkında</value>
   </data>
   <data name="String3" xml:space="preserve">
-    <value>Click on the dishes to leave a comment for the dish you want.</value>
+    <value>Sağlıklı yemeklerleriyle, lezzetiyle ünlü olan Angel's Restaurant 13. şubesiyle Londra'da.
+                   Mükemmel çalışan kadromuzla sevdiğimiz işi yapıyoruz. Enerjimizle başarıyı elde ediyoruz.</value>
   </data>
   <data name="String4" xml:space="preserve">
-    <value>About</value>
+    <value>Restaurantımızın kurucusudur. İmza yemekleriyle restaurantımız zincir restaurant haline gelmiştir.
+                                    Aynı zamanda yazılımcıdır. Sitemizi    Restaurantımızın kurucusudur. İmza yemekleriyle restaurantımız zincir restaurant haline gelmiştir.
+                                    Aynı zamanda yazılımcıdır. Sitemizi yazmıştır.</value>
+  </data>
+  <data name="String5" xml:space="preserve">
+    <value>Restaurantımızın baş aşçısıdır. Onun tariflerine ulaşmak zordur.
+                                   Elinin değdiği her şey lezzetlidir. Ünlü aşçımıza sahip olduğumuz için mutluyuz.</value>
+  </data>
+  <data name="String6" xml:space="preserve">
+    <value>Mutfak Müdürüdür. Aynı zamanda restaurantın kurucu ortaklarındandır. 
+                                    Boş vakitlerinde yazılımcılık yapmaktadır.</value>
+  </data>
+  <data name="String7" xml:space="preserve">
+    <value>Önceliğimiz her zaman sağlıktır. Bu yüzden anlaşmalı doktorumuzla yemeklerimizin sağlığını kontrol ediyoruz.
+                                    Her ay çalışanlarımıza bakım yaptırıyoruz.</value>
+  </data>
+  <data name="String8" xml:space="preserve">
+    <value>Restorantımız 2018 yılında kurulmuştur. Çalışanlarımızın girişimci ruhu ile şu an zincir restorantlar arasındayız. Gün geçtikçe de gelişip büyümek için elimizden geleni yapacağız.</value>
+  </data>
+  <data name="String9" xml:space="preserve">
+    <value>Bizi tercih ettiğiniz için teşekkür ederiz. Sağlıcakla kalın.</value>
   </data>
 </root>

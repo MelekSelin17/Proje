@@ -120,4 +120,13 @@
   <data name="String1" xml:space="preserve">
     <value>Ana Sayfa</value>
   </data>
+  <data name="String2" xml:space="preserve">
+    <value>Sağlıklı yemeklerleriyle, lezzetiyle ünlü olan Angel's Restaurant 13. şubesiyle Londra'da. Mükemmel çalışan kadromuzla sevdiğimiz işi yapıyoruz. Enerjimizle başarıyı elde ediyoruz.</value>
+  </data>
+  <data name="String3" xml:space="preserve">
+    <value>İstediğiniz yemeğe yorum bırakmak için yemeklere tıklayın.</value>
+  </data>
+  <data name="String4" xml:space="preserve">
+    <value>Hakkında</value>
+  </data>
 </root>

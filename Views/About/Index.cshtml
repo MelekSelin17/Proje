@@ -1,4 +1,5 @@
-﻿
+﻿@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
+
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -35,8 +36,8 @@ https://templatemo.com/tm-539-simple-house
 
                 <div class="tm-header">
                     <div class="row tm-header-inner">
-                        <div class="col-md-6 col-12">                       
-                            <img src="~/temp/img/simple-house-logo.png"  alt="Logo" class="tm-site-logo" />
+                        <div class="col-md-6 col-12">
+                            <img src="~/temp/img/simple-house-logo.png" alt="Logo" class="tm-site-logo" />
                             <div class="tm-site-text-box">
                                 <h1 class="tm-site-title">ANGEL'S RESTAURANT</h1>
                                 <h6 class="tm-site-description"></h6>
@@ -44,8 +45,8 @@ https://templatemo.com/tm-539-simple-house
                         </div>
                         <nav class="col-md-6 col-12 tm-nav">
                             <ul class="tm-nav-ul">
-                                <li class="tm-nav-li"><a href="/Home/Index/" class="tm-nav-link">Home</a></li>
-                                <li class="tm-nav-li"><a href="About/Index/" class="tm-nav-link active">About</a></li>
+                                <li class="tm-nav-li"><a href="/Home/Index/" class="tm-nav-link">@localizer["String1"] </a></li>
+                                <li class="tm-nav-li"><a href="/About/Index/" class="tm-nav-link active">@localizer["String2"] </a></li>
                             </ul>
                         </nav>
                     </div>
@@ -57,8 +58,7 @@ https://templatemo.com/tm-539-simple-house
             <header class="row tm-welcome-section">
                 <h2 class="col-12 text-center tm-section-title"> ABOUT ANGEL'S RESTAURANT</h2>
                 <p class="col-12 text-center">
-                   Sağlıklı yemeklerleriyle, lezzetiyle ünlü olan Angel's Restaurant 13. şubesiyle Londra'da.
-                   Mükemmel çalışan kadromuzla sevdiğimiz işi yapıyoruz. Enerjimizle başarıyı elde ediyoruz.
+                    @localizer["String3"]
                 </p>
             </header>
 
@@ -66,13 +66,12 @@ https://templatemo.com/tm-539-simple-house
                 <div class="row">
                     <article class="col-lg-6">
                         <figure class="tm-person">
-                            <img src="~/temp/img/about-01.jpg"  alt="Image" class="img-fluid tm-person-img" />
+                            <img src="~/temp/img/about-01.jpg" alt="Image" class="img-fluid tm-person-img" />
                             <figcaption class="tm-person-description">
                                 <h4 class="tm-person-name">Melek Selin Uysal</h4>
                                 <p class="tm-person-title">Founder and CEO</p>
                                 <p class="tm-person-about">
-                                 Restaurantımızın kurucusudur. İmza yemekleriyle restaurantımız zincir restaurant haline gelmiştir.
-                                    Aynı zamanda yazılımcıdır. Sitemizi yazmıştır.
+                                    @localizer["String4"]
                                 </p>
                                 <div>
                                     <a href="https://fb.com" class="tm-social-link"><i class="fab fa-facebook tm-social-icon"></i></a>
@@ -84,14 +83,13 @@ https://templatemo.com/tm-539-simple-house
                     </article>
                     <article class="col-lg-6">
                         <figure class="tm-person">
-                           
+
                             <img src="~/temp/img/about-02.jpg" alt="Image" class="img-fluid tm-person-img" />
                             <figcaption class="tm-person-description">
                                 <h4 class="tm-person-name">Aleyna Çankaya</h4>
                                 <p class="tm-person-title">Executive Chef</p>
                                 <p class="tm-person-about">
-                                   Restaurantımızın baş aşçısıdır. Onun tariflerine ulaşmak zordur.
-                                   Elinin değdiği her şey lezzetlidir. Ünlü aşçımıza sahip olduğumuz için mutluyuz.
+                                    @localizer["String5"]
                                 </p>
                                 <div>
                                     <a href="https://fb.com" class="tm-social-link"><i class="fab fa-facebook tm-social-icon"></i></a>
@@ -102,14 +100,13 @@ https://templatemo.com/tm-539-simple-house
                     </article>
                     <article class="col-lg-6">
                         <figure class="tm-person">
-                          
+
                             <img src="~/temp/img/about-03.jpg" alt="Image" class="img-fluid tm-person-img" />
                             <figcaption class="tm-person-description">
                                 <h4 class="tm-person-name">Şeyma Göl</h4>
                                 <p class="tm-person-title">Kitchen Manager</p>
                                 <p class="tm-person-about">
-                                  Mutfak Müdürüdür. Aynı zamanda restaurantın kurucu ortaklarındandır. 
-                                    Boş vakitlerinde yazılımcılık yapmaktadır.
+                                    @localizer["String6"]
                                 </p>
                                 <div>
                                     <a href="https://fb.com" class="tm-social-link"><i class="fab fa-facebook tm-social-icon"></i></a>
@@ -120,13 +117,12 @@ https://templatemo.com/tm-539-simple-house
                     </article>
                     <article class="col-lg-6">
                         <figure class="tm-person">
-                            <img src="~/temp/img/about-04.jpg"  alt="Image" class="img-fluid tm-person-img" />
+                            <img src="~/temp/img/about-04.jpg" alt="Image" class="img-fluid tm-person-img" />
                             <figcaption class="tm-person-description">
                                 <h4 class="tm-person-name">Beyza Atasoy</h4>
                                 <p class="tm-person-title">Restaurant's Doctor</p>
                                 <p class="tm-person-about">
-                                Önceliğimiz her zaman sağlıktır. Bu yüzden anlaşmalı doktorumuzla yemeklerimizin sağlığını kontrol ediyoruz.
-                                    Her ay çalışanlarımıza bakım yaptırıyoruz.
+                                    @localizer["String7"]
                                 </p>
                                 <div>
                                     <a href="https://fb.com" class="tm-social-link"><i class="fab fa-facebook tm-social-icon"></i></a>
@@ -149,18 +145,18 @@ https://templatemo.com/tm-539-simple-house
                 </div>
             </div>
             <div class="tm-container-inner tm-features">
-               
+
             </div>
             <div class="tm-container-inner tm-history">
                 <div class="row">
                     <div class="col-12">
                         <div class="tm-history-inner">
 
-                            <img src="~/temp/img/about-06.jpg"  alt="Image" class="img-fluid tm-history-img" />
+                            <img src="~/temp/img/about-06.jpg" alt="Image" class="img-fluid tm-history-img" />
                             <div class="tm-history-text">
                                 <h4 class="tm-history-title">Restorant Tarihçesi</h4>
-                                <p class="tm-mb-p">Restorantımız 2018 yılında kurulmuştur. Çalışanlarımızın girişimci ruhu ile şu an zincir restorantlar arasındayız. Gün geçtikçe de gelişip büyümek için elimizden geleni yapacağız.</p>
-                                <p>Bizi tercih ettiğiniz için teşekkür ederiz. Sağlıcakla kalın.</p>
+                                <p class="tm-mb-p">@localizer["String8"] </p>
+                                <p>@localizer["String9"] </p>
                             </div>
                         </div>
                     </div>
@@ -169,13 +165,11 @@ https://templatemo.com/tm-539-simple-house
         </main>
 
         <footer class="tm-footer text-center">
-       
         </footer>
     </div>
     <script src="js/jquery.min.js"></script>
     <script src="js/parallax.min.js"></script>
     <footer class="tm-footer text-center">
-      
     </footer>
 
     <script src="~/temp/js/jquery.min.js"></script>

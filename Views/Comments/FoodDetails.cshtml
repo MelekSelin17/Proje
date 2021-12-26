@@ -11,30 +11,42 @@
         <div class="row">
 
             <div class="col-sm-5 col-md-6 col-12 pb-4">
-                <h1>Comments</h1>
+                <h1>Yemek Detay Sayfası</h1>
                 @foreach (var item in Model)
                 {
-                    <h4>@item.Name</h4> <span></span> <br>
+            <div class="comment mt-4 text-justify float-">
 
-                    @foreach (var itemk in item.Comments)
-                    {
-                        <div class="comment mt-4 text-justify float-left">
-
-                            <h4>@itemk.Name</h4> <span>- 20 October, 2018</span> <br>
-                            <p>@itemk.Description</p>
-                        </div>
-
-                    }
+                <img src="@item.Photo" alt="Image" class="img-fluid tm-gallery-img" />
+                <p style="color:aliceblue">ADI: @item.Name</p> <br>
+                <p style="color:aliceblue">AÇIKLAMASI: @item.Description</p> <br> <br>
+                <p style="color:aliceblue">FİYATI: @item.Fiyat</p> <br> <br>
+            </div>
+               
                 }
 
             </div>
           
 
             <div class="col-lg-4 col-md-5 col-sm-4 offset-md-1 offset-sm-1 col-12 mt-4">
+                <p style="color:aliceblue">YORUMLAR</p>
+                @foreach (var a in Model)
+                {
+                    @foreach (var b in a.Comments)
+                    {
+                        <div class="comment mt-4 text-justify float-left">
+
+                            <h4>@b.Name</h4> <span>- 20 October, 2018</span> <br>
+                            <p>@b.Description</p>
+                        </div>
+
+                    }
+
+                }
                 <form id="algin-form">
-            
-                    <div class="form-inline"> <input type="checkbox" name="check" id="checkbx" class="mr-1"> <label for="subscribe">Subscribe me to the newlettter</label> </div>
-                    <div class="form-group"> <button type="button" id="post"onclick="location = '/Comments/Create'" class="btn">Post Comment</button> </div>
+                    <div class="form-group"> <button type="button" id="post" onclick="location = '/Comments/Create'" class="btn">Sen de bir yorum bırak</button> </div>
+                </form>
+                <form id="algin-form">
+                    <div class="form-group"> <button type="button" id="post" onclick="location = '/Home/Index'" class="btn">Ana sayfaya dön</button> </div>
                 </form>
             </div>
         </div>

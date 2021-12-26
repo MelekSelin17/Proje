@@ -61,9 +61,7 @@ namespace Proje.Controllers
             return View();
         }
 
-        // POST: Comments/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+      
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Description,Name,FoodId")] Comment comment)
@@ -72,7 +70,7 @@ namespace Proje.Controllers
             {
                 _context.Add(comment);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Create));
             }
             ViewData["Name"] = new SelectList(_context.Foods, "Id", "Name", comment.Food.Name);
  

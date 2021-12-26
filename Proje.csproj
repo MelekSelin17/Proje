@@ -22,7 +22,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Resources\Views\Account\" />
     <Folder Include="Resources\Views\Comments\" />
     <Folder Include="Resources\Views\FoodCategory\" />
     <Folder Include="Resources\Views\Foods\" />

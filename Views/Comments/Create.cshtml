@@ -17,9 +17,9 @@
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
                     <div class="form-group">
-                        <h4>Leave a comment</h4>   <label asp-for="Description" class="control-label"></label>
+                        <h4>Yorum Yap</h4>   <label asp-for="Description" class="control-label"></label>
                         <input asp-for="Description" class="form-control" />
-                        <span asp-validation-for="Description" class="text-danger"></span><textarea name="msg" id="" msg cols="30" rows="5" class="form-control" style="background-color: black;"></textarea>
+                        <span asp-validation-for="Description" class="text-danger"></span>
                     </div>
 
                     <div class="form-group">
@@ -33,10 +33,7 @@
                         <select asp-for="FoodId" class="form-control" asp-items="ViewBag.Name"></select>
                     </div>
 
-                    <p class="text-secondary">If you have a <a href="#" class="alert-link">gravatar account</a> your address will be used to display your profile picture.</p>
-
-                    <div class="form-inline"> <input type="submit" value="Create" class="btn btn-primary" /><label for="subscribe">Subscribe me to the newlettter</label> </div>
-                    @*<div class="form-group"> <button type="button" id="post" onclick="location = '/Comments/Create'" class="btn">Post Comment</button> </div>*@
+                    <div class="form-inline"> <input type="submit" value="Create" class="btn btn-primary" /><label for="subscribe">  Teşekkürler</label> </div>
 
                 </form>
             </div>

@@ -121,12 +121,33 @@
     <value>Home</value>
   </data>
   <data name="String2" xml:space="preserve">
-    <value>Famous for its healthy food and taste, Angel's Restaurant is in London with its 13th branch. We do what we love with our excellent staff. We achieve success with our energy.</value>
+    <value>About</value>
   </data>
   <data name="String3" xml:space="preserve">
-    <value>Click on the dishes to leave a comment for the dish you want.</value>
+    <value>Famous for its healthy food and taste, Angel's Restaurant is in London with its 13th branch.
+                   We do what we love with our excellent staff. We achieve success with our energy.</value>
   </data>
   <data name="String4" xml:space="preserve">
-    <value>About</value>
+    <value>She is the founder of our restaurant. Our restaurant has become a chain restaurant with its signature dishes.
+                                    He is also a software developer. He is the founder of our site and restaurant. Our restaurant has become a chain restaurant with its signature dishes.
+                                    He is also a software developer. He wrote our site.</value>
+  </data>
+  <data name="String5" xml:space="preserve">
+    <value>She is the head chef of our restaurant. His recipes are hard to come by.
+                                   Everything you touch is delicious. We are happy to have our famous chef.</value>
+  </data>
+  <data name="String6" xml:space="preserve">
+    <value>She is the Kitchen Manager. He is also one of the founding partners of the restaurant.
+                                    He works as a software developer in his spare time.</value>
+  </data>
+  <data name="String7" xml:space="preserve">
+    <value>Our priority is always health. That's why we check the health of our meals with our contracted doctor.
+                                    Every month, we have our employees take care of them.</value>
+  </data>
+  <data name="String8" xml:space="preserve">
+    <value>Our restaurant was established in 2018. We are among the chain restaurants with the entrepreneurial spirit of our employees. We will do our best to develop and grow day by day.</value>
+  </data>
+  <data name="String9" xml:space="preserve">
+    <value>Thank you for choosing us. Stay well.</value>
   </data>
 </root>
