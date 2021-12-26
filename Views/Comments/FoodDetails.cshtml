@@ -11,24 +11,25 @@
         <div class="row">
 
             <div class="col-sm-5 col-md-6 col-12 pb-4">
-                <h1>Yemek Detay Sayfası</h1>
+                <h3> <p style="color:aliceblue">Yemek Detay Sayfası</p></h3>
                 @foreach (var item in Model)
                 {
-            <div class="comment mt-4 text-justify float-">
+                    <div class="comment mt-4 text-justify float-">
 
-                <img src="@item.Photo" alt="Image" class="img-fluid tm-gallery-img" />
-                <p style="color:aliceblue">ADI: @item.Name</p> <br>
-                <p style="color:aliceblue">AÇIKLAMASI: @item.Description</p> <br> <br>
-                <p style="color:aliceblue">FİYATI: @item.Fiyat</p> <br> <br>
-            </div>
-               
+                        <img src="@item.Photo" alt="Image" class="img-fluid tm-gallery-img" />
+                        <p style="color:aliceblue">ADI: @item.Name</p> <br>
+                        <p style="color:aliceblue">AÇIKLAMASI: @item.Description</p> <br> <br>
+                        <p style="color:aliceblue">FİYATI: @item.Fiyat</p> <br> <br>
+                    </div>
+
                 }
 
             </div>
           
 
             <div class="col-lg-4 col-md-5 col-sm-4 offset-md-1 offset-sm-1 col-12 mt-4">
-                <p style="color:aliceblue">YORUMLAR</p>
+                <h3> <p style="color:aliceblue">YORUMLAR</p></h3>
+          
                 @foreach (var a in Model)
                 {
                     @foreach (var b in a.Comments)
@@ -43,11 +44,9 @@
 
                 }
                 <form id="algin-form">
-                    <div class="form-group"> <button type="button" id="post" onclick="location = '/Comments/Create'" class="btn">Sen de bir yorum bırak</button> </div>
+                    <div class="form-group"> <button type="button" id="post" onclick="location = '/Comments/Create'" class="btn">YORUM YAP</button> </div>
                 </form>
-                <form id="algin-form">
-                    <div class="form-group"> <button type="button" id="post" onclick="location = '/Home/Index'" class="btn">Ana sayfaya dön</button> </div>
-                </form>
+              
             </div>
         </div>
     </div>

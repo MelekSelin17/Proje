@@ -18,6 +18,7 @@ namespace Proje.Controllers
 
         public async Task<IActionResult> Login(string errorMessage)
         {
+             
             ViewBag.ErrorMessage = errorMessage;
             return View();
         }
