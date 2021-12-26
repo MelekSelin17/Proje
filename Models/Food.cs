@@ -16,6 +16,7 @@ namespace Proje.Models
         public string Photo { get; set; }
         public string Fiyat { get; set; }
 
+        public List<Comment> Comments { get; set; }
 
 
         [ForeignKey("FoodCategory")]

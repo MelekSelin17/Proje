@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Proje.Data;
 
 namespace Proje.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211225214308_useridupdate")]
+    partial class useridupdate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -228,12 +230,14 @@ namespace Proje.Migrations
                     b.Property<int>("FoodId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("UserDetailId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("FoodId");
+
+                    b.HasIndex("UserDetailId");
 
                     b.ToTable("Comments");
                 });
@@ -294,7 +298,32 @@ namespace Proje.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("UserDetailId");
+
                     b.ToTable("Likes");
+                });
+
+            modelBuilder.Entity("Proje.Models.UserDetail", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UsersId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UsersId");
+
+                    b.ToTable("UserDetails");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -351,12 +380,20 @@ namespace Proje.Migrations
             modelBuilder.Entity("Proje.Models.Comment", b =>
                 {
                     b.HasOne("Proje.Models.Food", "Food")
-                        .WithMany("Comments")
+                        .WithMany()
                         .HasForeignKey("FoodId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("Proje.Models.UserDetail", "UserDetail")
+                        .WithMany("Comment")
+                        .HasForeignKey("UserDetailId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Food");
+
+                    b.Navigation("UserDetail");
                 });
 
             modelBuilder.Entity("Proje.Models.Food", b =>
@@ -370,14 +407,36 @@ namespace Proje.Migrations
                     b.Navigation("FoodCategory");
                 });
 
-            modelBuilder.Entity("Proje.Models.Food", b =>
+            modelBuilder.Entity("Proje.Models.Like", b =>
                 {
-                    b.Navigation("Comments");
+                    b.HasOne("Proje.Models.UserDetail", "UserDetail")
+                        .WithMany("Likes")
+                        .HasForeignKey("UserDetailId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("UserDetail");
+                });
+
+            modelBuilder.Entity("Proje.Models.UserDetail", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "Users")
+                        .WithMany()
+                        .HasForeignKey("UsersId");
+
+                    b.Navigation("Users");
                 });
 
             modelBuilder.Entity("Proje.Models.FoodCategory", b =>
                 {
                     b.Navigation("Foods");
+                });
+
+            modelBuilder.Entity("Proje.Models.UserDetail", b =>
+                {
+                    b.Navigation("Comment");
+
+                    b.Navigation("Likes");
                 });
 #pragma warning restore 612, 618
         }

@@ -11,8 +11,10 @@ namespace Proje.Models
         public int Id { get; set; }
         public string Description { get; set; }
 
-        [ForeignKey("UserDetail")]
-        public int UserDetailId { get; set; }
-        public UserDetail UserDetail { get; set; }
+        public string Name { get; set; }
+
+        [ForeignKey("Food")]
+        public int FoodId { get; set; }
+        public Food Food { get; set; }
     }
 }

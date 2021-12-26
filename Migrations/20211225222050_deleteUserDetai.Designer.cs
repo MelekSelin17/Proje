@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Proje.Data;
 
 namespace Proje.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211225222050_deleteUserDetai")]
+    partial class deleteUserDetai
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -351,7 +353,7 @@ namespace Proje.Migrations
             modelBuilder.Entity("Proje.Models.Comment", b =>
                 {
                     b.HasOne("Proje.Models.Food", "Food")
-                        .WithMany("Comments")
+                        .WithMany()
                         .HasForeignKey("FoodId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -368,11 +370,6 @@ namespace Proje.Migrations
                         .IsRequired();
 
                     b.Navigation("FoodCategory");
-                });
-
-            modelBuilder.Entity("Proje.Models.Food", b =>
-                {
-                    b.Navigation("Comments");
                 });
 
             modelBuilder.Entity("Proje.Models.FoodCategory", b =>

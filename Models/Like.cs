@@ -13,6 +13,5 @@ namespace Proje.Models
 
         [ForeignKey("UserDetail")]
         public int UserDetailId { get; set; }
-        public UserDetail UserDetail { get; set; }
     }
 }

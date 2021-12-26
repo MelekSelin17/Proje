@@ -17,6 +17,7 @@ namespace Proje.Data
             CreateFoodCategories(context);
             CreateFood(context);
             CreateRoles(roleManager, userManager).Wait();
+        
         }
 
         private static void CreateFoodCategories(ApplicationDbContext context)
@@ -40,6 +41,7 @@ namespace Proje.Data
             
             
         }
+        
         private static void CreateFood(ApplicationDbContext context)
         {
             if (!context.Foods.Any())
@@ -134,11 +136,17 @@ namespace Proje.Data
                 Email = "admin@gmail.com",
                 UserName = "superAdmin",
             };
-            var ccc = await userManager.CreateAsync(adminObject, "1234");
-            await userManager.AddToRoleAsync(adminObject, "Admin");
+            var userObject = new IdentityUser()
+            {
+                Email = "selin@gmail.com",
+                UserName = "Selin",
+            };
+            var ccc = await userManager.CreateAsync(userObject, "1234");
+            await userManager.AddToRoleAsync(userObject, "Guest");
 
             return;
         }
+       
 
     }
 }
