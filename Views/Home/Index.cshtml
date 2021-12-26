@@ -1,4 +1,5 @@
-﻿@{
+﻿@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
+@{
     ViewData["Title"] = "Home Page";
 }
 @model IEnumerable<Proje.Models.FoodCategory>
@@ -13,6 +14,8 @@
     <title>Simple House Template</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400" rel="stylesheet" />
     <link href="~/temp/css/templatemo-style.css" rel="stylesheet" />
+    <link href="~/temp/css/all.min.css" rel="stylesheet" />
+    <script src="~/js/site.js"></script>
 </head>
 <!--
 
@@ -41,8 +44,8 @@ https://templatemo.com/tm-539-simple-house
                         </div>
                         <nav class="col-md-6 col-12 tm-nav">
                             <ul class="tm-nav-ul">
-                                <li class="tm-nav-li"><a href="index.html" class="tm-nav-link active">Home</a></li>
-                                <li class="tm-nav-li"><a href="about.html" class="tm-nav-link">About</a></li>
+                                <li class="tm-nav-li"><a href="/Home/Index" class="tm-nav-link active">@localizer["String1"] </a></li>
+                                <li class="tm-nav-li"><a href="About/Index" class="tm-nav-link">About</a></li>
                                 <li class="tm-nav-li"><a href="contact.html" class="tm-nav-link">Contact</a></li>
                             </ul>
                         </nav>
@@ -52,7 +55,7 @@ https://templatemo.com/tm-539-simple-house
                         <button style=" font-size: 16px;margin: 4px 2px; float: right; color: aqua; " type="submit" onclick="location = '/FoodCategory/Index'" class="button"> <h4 class="tm-gallery-title">Kategori Ekle</button>
                         <button style=" font-size: 16px;margin: 4px 2px; float: right; color: aqua; " type="submit" onclick="location = '/Foods/Index'" class="button"> <h4 class="tm-gallery-title">Yemek Ekle</button>
                     }
-                    </div>
+                </div>
 
             </div>
         </div>
@@ -68,7 +71,7 @@ https://templatemo.com/tm-539-simple-house
                     <ul>
                         @foreach (var item in Model)
                         {
-                        <li class="tm-paging-item"><a href="#" class="tm-paging-link active">@item.Name</a></li>
+                            <li class="tm-paging-item"><a href="#" class="tm-paging-link active">@item.Name</a></li>
                         }
                     </ul>
                 </nav>
@@ -88,7 +91,7 @@ https://templatemo.com/tm-539-simple-house
                                 <figure>
                                     <img src="@item.Photo" alt="Image" class="img-fluid tm-gallery-img" />
                                     <figcaption>
-                                        <button  type="button" onclick="location = '/Comments/FoodDetails/@item.Id'" class="btn btn-bordered"> <h4 class="tm-gallery-title">@item.Name</h4></button>
+                                        <button type="button" onclick="location = '/Comments/FoodDetails/@item.Id'" class="btn btn-bordered"> <h4 class="tm-gallery-title">@item.Name</h4></button>
                                         <p class="tm-gallery-description">@item.Description</p>
                                         <p class="tm-gallery-price">@item.Fiyat</p>
                                     </figcaption>
@@ -97,7 +100,7 @@ https://templatemo.com/tm-539-simple-house
 
                         }
                     </div>}<!-- gallery page 1 -->
-             
+
             </div>
         </main>
 

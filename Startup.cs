@@ -5,13 +5,16 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
 using Proje.Data;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -32,9 +35,23 @@ namespace Proje
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
+            services.AddSession();
             services.AddDatabaseDeveloperPageExceptionFilter();
+            services.Configure<RequestLocalizationOptions>(opt =>
+            {
+                var supportedCultures = new List<CultureInfo>
+                {
+                    new CultureInfo("tr"),
+                    new CultureInfo("en")
+                };
+                opt.DefaultRequestCulture = new RequestCulture("tr");
+                opt.SupportedCultures = supportedCultures;
+                opt.SupportedUICultures = supportedCultures;
+            });
+            services.AddLocalization(opt => { opt.ResourcesPath = "Resources"; });
+            services.AddMvc().AddViewLocalization(Microsoft.AspNetCore.Mvc.Razor.LanguageViewLocationExpanderFormat.Suffix).AddDataAnnotationsLocalization();
             //services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-               // .AddEntityFrameworkStores<ApplicationDbContext>();
+            // .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddIdentity<IdentityUser, IdentityRole>(options =>
             {
                 options.Password.RequiredLength = 4;
@@ -69,8 +86,6 @@ namespace Proje
         {
 
 
-
-
             DataSeeding.Seed(app);
             if (env.IsDevelopment())
             {
@@ -90,9 +105,12 @@ namespace Proje
             app.UseRouting();
 
             app.UseAuthentication();
-
+            app.UseCookiePolicy();
             app.UseAuthorization();
-           
+            app.UseSession();
+
+            app.UseRequestLocalization(app.ApplicationServices.GetRequiredService<IOptions<RequestLocalizationOptions>>().Value);
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
